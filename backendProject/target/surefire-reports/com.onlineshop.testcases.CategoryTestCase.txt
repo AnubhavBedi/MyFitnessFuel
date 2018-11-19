@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.onlineshop.testcases.CategoryTestCase
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 4.848 s - in com.onlineshop.testcases.CategoryTestCase
