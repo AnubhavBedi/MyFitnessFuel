@@ -11,15 +11,17 @@
 	}
 </style>
  <c:set var="contextRoot" value="${pageContext.request.contextPath}"/>
+ 
+ <body >
 <div class="container">
 
 <br/>
 
 
-
+ 
 <h1 style="color:green">${msg}</h1>
 <h1>Cart</h1>
-<table class="table table-condensed">
+<table class="table table-bordered ">
     <thead>
       <tr>
         <th>Item Name</th>
@@ -32,7 +34,7 @@
        	<th>Decrease Quantity</th>
       </tr>
     </thead>
-   <tbody>
+   <tbody  >
  <c:forEach items="${itemsList}" var="itemObj">
  		
   		<tr>
@@ -58,9 +60,11 @@
   </td>
   </tr>
   </tbody>
+ 
 </table>
 
 
 <div style="margin-top: 100px">
 <jsp:include page="./shared/footer.jsp"></jsp:include>
 </div>
+</div></body>

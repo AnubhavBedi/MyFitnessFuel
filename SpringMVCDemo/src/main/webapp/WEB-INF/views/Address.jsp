@@ -11,16 +11,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Address</title>
 </head>
-<body>
+<body style="background-color:#ffd480">
 
-<jsp:include page="./shared/header.jsp"/>
+<jsp:include page="./shared/footer.jsp"/>
 
 <div class="container">
 
 	<h2>Address Form</h2>
 	<br/>
 	
-	<form:form action="${contextRoot }/address" modelAttribute="addobj"/>
+	<form:form action="${contextRoot}/addToCart/addAddress" modelAttribute="addressObj" method="POST">
 	<div class="form-group">
     <label for="houseNumber">House Number</label>
     <form:input type="text" class="form-control" id="houseNumber" path="houseNumber"/>
@@ -32,16 +32,32 @@
  	</div>
  	
  	<div class="form-group">
+    <label for="city ">City :</label>
+    <form:input type="text" class="form-control" id="city" path="city"/>
+ 	</div>
+ 	
+ 	
+ 	<div class="form-group">
     <label for="country">Country :</label>
     <form:input type="text" class="form-control" id="country" path="country"/>
  	</div>
  	
  	<div class="form-group">
     <label for="pincode">Pincode :</label>
-    <form:input type="text" class="form-control" id="pincode" path="pincode"/>
+    <form:input type="text" class="form-control" id="pincode" path="pinCode"/>
  	</div>
+ 	
+ 	
+ 	<div class="form-group">
+    
+    <input type="submit" class="form-control btn btn-primary" value="Add"/>
+		</div>
+ 	</form:form>
 
-<jsp:include page="./shared/header.jsp"/>
+
+</div>
+<div style="margin-top:350px">
+<jsp:include page="./shared/footer.jsp"/>
 </div>
 </body>
 </html>

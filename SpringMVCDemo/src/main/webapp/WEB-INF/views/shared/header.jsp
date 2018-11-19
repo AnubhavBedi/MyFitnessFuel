@@ -35,6 +35,8 @@
 </style> 
 <body>
 
+
+
 <nav class="navbar1 navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -66,9 +68,15 @@
       </li>
       </sec:authorize>
     </ul>
+    
+    
+      <sec:authorize access="hasAuthority('USER')" >
+    
     	<ul class="nav navbar-nav ">
-    	<li><a href="${contextRoot}/login"><span class="glyphicon glyphicon-shopping-cart bt-lg"></span></a></li>
+    	<li><a href="${contextRoot}/addToCart/viewCart?uEmail=${sessionScope.userEmail}"><span class="glyphicon glyphicon-shopping-cart bt-lg"></span></a></li>
     	</ul>
+    </sec:authorize>	
+    	
     
     <sec:authorize access="isAnonymous()">
     <ul class="nav navbar-nav navbar-right">
@@ -84,4 +92,7 @@
     	</ul>
     </sec:authorize>
   </div>
+  </div>
 </nav>
+</body>
+</html>

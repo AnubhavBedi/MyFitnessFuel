@@ -135,8 +135,16 @@ public class PageController {
 		return null;
 	}
 	
+	@RequestMapping(value="/ContactUs",method=RequestMethod.GET)
+	 public String toString(){
+		 return "ContactUs";
+	 }
 	
-}
+	@RequestMapping(value="/AboutUs",method=RequestMethod.GET)
+	 public String toString1(){
+		 return "AboutUs";
+	 }
+}	
 
 
 

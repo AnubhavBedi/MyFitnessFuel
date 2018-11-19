@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,11 +18,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.onlineshop.dao.Cartdao;
 import com.onlineshop.dao.Itemdao;
+import com.onlineshop.dao.Orderdao;
 import com.onlineshop.dao.Productdao;
 import com.onlineshop.dao.Userdao;
 import com.onlineshop.models.Address;
 import com.onlineshop.models.Cart;
 import com.onlineshop.models.Item;
+import com.onlineshop.models.Order;
+import com.onlineshop.models.User;
 
 
 @Controller
@@ -184,4 +189,96 @@ public class CartController {
 		}
 		
 	}
+	@RequestMapping(value="/addToCart/getAddressForm",method=RequestMethod.GET)
+	public ModelAndView getAddressForm(){
+		ModelAndView mv=new ModelAndView("Address");
+		mv.addObject("addressObj",new Address());
+		return mv;
+	}
+	
+	@RequestMapping(value="/addToCart/addAddress",method=RequestMethod.POST)	
+	public ModelAndView addAddress(@ModelAttribute("addressObj")Address addressObj){
+		
+		
+		String email=request.getUserPrincipal().getName();
+		
+		addressObj.setUser(userDao.getuser(email));
+		userDao.addAddress(addressObj);
+		
+		List<Address> addressList=userDao.getAllAddressForUser(email);
+		ModelAndView mv=new ModelAndView("ViewAddress");
+			mv.addObject("addressList",addressList);
+			return mv;
+		
+		
+	}
+	
+	@Autowired
+	HttpSession session;
+	
+	@RequestMapping(value="/addToCart/selectedAddress/{addrId}",method=RequestMethod.GET)
+	public ModelAndView showOrderPage(@PathVariable("addrId")int aId){
+		
+		String email=request.getUserPrincipal().getName();
+		Cart cartObj=cartDao.getCartByCustomer(email);
+		
+		List<Item> items=itemDao.getItemsListByCart(cartObj.getCartId());
+		double sum=0;
+		
+		for(Item item:items){
+			sum=sum+item.getPrice();
+		}
+		
+		ModelAndView mv=new ModelAndView("OrderPage");
+		mv.addObject("itemsList",items);
+		mv.addObject("address",userDao.getAddress(aId));
+		mv.addObject("sum",sum);
+		
+		session.setAttribute("sum",sum);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="/addToCart/confirmAndPay",method=RequestMethod.GET)
+	public ModelAndView showPaymentPage(){
+		ModelAndView mv=new ModelAndView("PaymentPage");
+		mv.addObject("orderObj",new Order());
+		return mv;
+	}
+
+	
+	@Autowired
+	Orderdao orderDao;
+	
+	@RequestMapping(value="/addToCart/finalOrder",method=RequestMethod.POST)
+	public ModelAndView finalOrder(@ModelAttribute("orderObj")Order obj){
+		
+		
+		Principal p=request.getUserPrincipal();
+		String email=p.getName();
+		
+		
+		System.out.println("User Email ::: "+email);
+		
+		
+		User userObj=userDao.getuser(email);
+		System.out.println("User object : "+userObj.getEmail());
+		
+		obj.setUser(userObj);
+		
+		obj.setTotalPrice((double)session.getAttribute("sum"));
+		orderDao.makeOrder(obj);
+		
+		
+		
+		
+		ModelAndView mv=new ModelAndView("Thanku");
+		return mv;
+	}
+
 }
+
+
+
+
+

@@ -10,35 +10,43 @@
 <jsp:include page="./shared/header.jsp"/>
 
 
-	<div class="container-fluid">
-    <h2 style="color:#FDEBD0;font-weight:bold;text-align:center">Contact Us</h2>
+	<div class="container">
+    <h2 style="color:#117864;font-weight:bold;text-align:center">Contact Us</h2>
   	</div>
   	
-  	<div class="jumbotron" style="background-color:#b3ffb3">
+  <div class="jumbotron" style="background-color:#E6B0AA"  align="center" ">
    
-    	<p>Fitness Fuel Center has a fully trained, friendly, and enthusiastic store support team that can help you with any question you have about your order. We practice what we preach, and all our support team workout and take supplements, so we can help answer any questions you might have about our products.
+    	<h3>Fitness Fuel Center has a fully trained, friendly, and enthusiastic store support team that can help you with any question you have about your order. 
+    	
+    	We practice what we preach, and all our support team workout and take supplements, so we can help answer any questions you might have about our products We can also take orders by phone, so call us if you want to speak to someone about placing an order!
+				
+				Customer Service Numbers: 9818462745, 011-25250067
 
-	   	   We can also take orders by phone, so call us if you want to speak to someone about placing an order!
-
-					Customer Service Numbers: 9818462745, 011-25250067</p>
+					</h3>
   	</div>
-		
-	<div class="container-container">
-		<h3><strong>SUPPORT HOURS</strong></h3>
+  	
+	
+	<div >
+    <h2 style="color:#117864;font-weight:bold;text-align:center">SUPPORT HOUR</h2>
+  </div>
+	<div class="jumbotron" style="background-color:#E6B0AA  " align="center">
 
 			<p>Monday-Friday: 8am to 8pm </p>
 			<p>Saturday & Sunday: 9am to 5pm </p>
 	</div>
 	
 	
+	<div class="container-fluid">
+    <h2 style="color:#117864;font-weight:bold;text-align:center">CONTACT US VIA EMAIL</h2>
+  	</div>
+		<div class="jumbotron" style="background-color:#E6B0AA  ">
 	
-	<h3><strong>CONTACT US VIA EMAIL</strong></h3>
 			
 			<p>	We answer emails 7 days a week. Our customer service team is very fast, most weekday inquiries are answered in around an hour! 
 				Some questions may be more complicated and take time to resolve.
 				
 					mail:fitnessfuels_center@gmail.com</p>
-		
+			</div>
 	<jsp:include page="./shared/footer.jsp"/>
 	
 </body>

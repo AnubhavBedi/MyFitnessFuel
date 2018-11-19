@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="./shared/header.jsp">
+
 
 	<h1> Fitness Fuel </h1>
 
@@ -14,6 +16,8 @@
 		</br>
 
 	<h3>${MsgToDisplay}</h3>
-
+<div style="margin-top:350px">
+<jsp:include page="./shared/footer.jsp"/>
+</div>
 </body>
 </html>

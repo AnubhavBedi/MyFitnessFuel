@@ -81,6 +81,14 @@ import javax.persistence.Table;
 			return cvv;
 		}
 		public void setCvv(String cvv) {
+			this.cvv = cvv;
+		}
+		public Double getTotalPrice() {
+			return totalPrice;
+		}
+		public void setTotalPrice(Double totalPrice) {
+			this.totalPrice = totalPrice;
+		}
 
-}
+		
 }

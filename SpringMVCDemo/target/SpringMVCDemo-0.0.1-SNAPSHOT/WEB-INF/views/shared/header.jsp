@@ -41,7 +41,7 @@
       <a class="navbar-brand" href="http://localhost:7838/SpringMVCDemo/">Fitness Fuel</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="http://localhost:7838/SpringMVCDemo/">Home</a></li>
+      <li><a href="${contextRoot}/">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Shop By Category<span class="caret"></span></a>
         <ul class="dropdown-menu">
         <c:forEach items="${sessionScope.catList}" var="catObj">
@@ -52,8 +52,8 @@
     </li>
 
      
-      <li><a href="#">About Us</a></li>
-      <li><a href="/ContactUs">Contact Us</a></li>
+      <li><a href="${contextRoot}/AboutUs">About Us</a></li>
+      <li><a href="${contextRoot}/ContactUs">Contact Us</a></li>
       
       <sec:authorize access="hasAuthority('ADMIN')" >
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin Options<span class="caret"></span></a>
@@ -66,9 +66,15 @@
       </li>
       </sec:authorize>
     </ul>
+    
+    
+      <sec:authorize access="hasAuthority('USER')" >
+    
     	<ul class="nav navbar-nav ">
-    	<li><a href="${contextRoot}/login"><span class="glyphicon glyphicon-shopping-cart bt-lg"></span></a></li>
+    	<li><a href="${contextRoot}/addToCart/viewCart?uEmail=${sessionScope.userEmail}"><span class="glyphicon glyphicon-shopping-cart bt-lg"></span></a></li>
     	</ul>
+    </sec:authorize>	
+    	
     
     <sec:authorize access="isAnonymous()">
     <ul class="nav navbar-nav navbar-right">
